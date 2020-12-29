@@ -79,10 +79,8 @@ beautifulsoup4
 pendulum
 click
 passlib
+alive-progress
 
 # machine learning
-tensorflow
 scikit-learn
-keras
-torch
-opencv-python
+nltk

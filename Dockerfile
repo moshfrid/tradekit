@@ -1,13 +1,11 @@
 FROM python:3.8
 
-MAINTAINER Part Time Larry "parttimelarry@gmail.com"
-
 ADD . /app
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y build-essential redis-server sqlite3 \
-    curl software-properties-common
+RUN apt-get update && apt-get full-upgrade && apt-get install -y build-essential redis-server sqlite3 \
+  curl software-properties-common cron
 
 # install nodejs and wscat websocket client
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
@@ -25,4 +23,4 @@ RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
 RUN rm -R ta-lib ta-lib-0.4.0-src.tar.gz
 
 # install popular Python packages
-RUN pip3 install -r requirements.txt
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
